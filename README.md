@@ -5,8 +5,19 @@ This application was built as a templete for anyone who needs login/out features
 
 ##Installation
 1. Clone this project onto your server
-2. Add a databases and set your URL in the `application/config/database.php` and `application/config/config.php`
-3. Run the following to create the desired tables in your database,
+2. Add the following to your Apache server configuration
+```
+   <Directory /var/www/html/>
+      AllowOverride All
+      RewriteEngine on
+      RewriteCond $1 !^(index\.php|resources|robots\.txt)
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteCond %{REQUEST_FILENAME} !-d
+      RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+   </Directory>
+```
+3. Add a databases and set your URL in the `application/config/database.php` and `application/config/config.php`
+4. Run the following to create the desired tables in your database,
 
 ```sql
 CREATE TABLE `users` (
