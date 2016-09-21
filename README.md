@@ -3,10 +3,16 @@ Login, Logout, Create New User with Permissions on Codeigniter 3
 
 This application was built as a templete for anyone who needs login/out features on a codeigniter web application which also supports creating new users and permissions.
 
+##Features
+- Create new users from your application
+- Change user permissions
+- Easy force of Login/Admin privileges
+- Redirect to previouse page after login
+
 ##Installation
 1. Clone this project onto your server
 2. Add the following to your Apache server configuration
-```
+```apache
    <Directory /var/www/html/>
       AllowOverride All
       RewriteEngine on
