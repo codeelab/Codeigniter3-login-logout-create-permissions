@@ -1,3 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-<h1 class="page-header">Portal</h1>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Portal</h1>
+            </div> <!-- END col-lg-12 -->
+        </div> <!-- END row -->
+    </div> <!-- END container-fluid -->
+</div> <!-- END page-wrapper -->

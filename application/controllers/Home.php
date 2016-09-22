@@ -12,6 +12,8 @@ class Home extends CI_Controller {
         
         $data['page_title'] = 'Home - Dashboard';
 
+        $this->load->view('templates/header', $data);
         $this->load->view('view');
+        $this->load->view('templates/footer');
     }
 } // END controller
