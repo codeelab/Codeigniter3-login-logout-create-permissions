@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Portal</h1>
+                <?= $_SESSION['username']; ?>
             </div> <!-- END col-lg-12 -->
         </div> <!-- END row -->
     </div> <!-- END container-fluid -->

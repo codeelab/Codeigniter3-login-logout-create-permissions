@@ -8,7 +8,9 @@ class User_model extends CI_Model {
             $this->load->database();
 		
     }
-	
+    
+    //CREATE
+    
     public function create_user($username, $email, $password) {
 		
 	$data = array(
@@ -44,5 +46,40 @@ class User_model extends CI_Model {
 	return password_hash($password, PASSWORD_BCRYPT);
 		
     }
+    
+    //LOGIN
+    
+    public function resolve_user_login($username, $password) {
+		
+	$this->db->select('password');
+	$this->db->from('users');
+	$this->db->where('username', $username);
+	$hash = $this->db->get()->row('password');
+		
+	return $this->verify_password_hash($password, $hash);
+        
+    }
+    
+    public function get_permissions($uid) {
+        
+        $query = $this->db->get_where('permissions', array('uid' => $uid));
+        return $query->result_array();
+
+    }
+
+    public function get_user($uid) {
+		
+	$this->db->from('users');
+	$this->db->where('uid', $uid);
+	return $this->db->get()->row();
+		
+    }
+    
+    private function verify_password_hash($password, $hash) {
+		
+	return password_verify($password, $hash);
+		
+    }
+    
     
 } // END model

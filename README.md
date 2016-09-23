@@ -44,3 +44,6 @@ CREATE TABLE `permissions` (
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 ```
+
+5. Add your domain to the `$config['base_url'] = '';` in `applications/config/config.php`
+6. Navigate to domain.com/setup to create the admin user.
