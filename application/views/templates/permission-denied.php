@@ -4,8 +4,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Portal</h1>
-                <a href="/admin">Go to Admin</a>
+                <h1 class="page-header">Permission Denied</h1>
+                <p>You don't have privileges to view this page.</p>
             </div> <!-- END col-lg-12 -->
         </div> <!-- END row -->
     </div> <!-- END container-fluid -->

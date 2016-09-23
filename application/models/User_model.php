@@ -79,7 +79,6 @@ class User_model extends CI_Model {
 		
 	return password_verify($password, $hash);
 		
-    }
-    
+    }    
     
 } // END model
