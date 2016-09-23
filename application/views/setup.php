@@ -19,13 +19,12 @@
             <?php endif; ?>
             <div class="col-lg-12">
                 <div class="page-header">
-                    <h1>Create local user</h1>
+                    <h1>Create local admin</h1>
 		</div>
 		<?= form_open() ?>
                     <div class="form-group">
 			<label for="username">Username</label>
-			<input type="text" class="form-control" id="username" name="username" placeholder="Enter a username">
-			<p class="help-block">At least 4 characters, letters or numbers only</p>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter a username" value="admin" readonly>
                     </div>
                     <div class="form-group">
 			<label for="email">Email</label>
