@@ -57,4 +57,15 @@ class Authentication extends CI_Controller {
                 }
             }
     } // END login
+    
+    public function logout() {
+			
+            // clear session
+            foreach ($_SESSION as $key => $value) {
+		unset($_SESSION[$key]);
+            }
+            
+            redirect('/');
+            
+    } // END logout	
 } // END controller
