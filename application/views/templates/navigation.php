@@ -12,8 +12,9 @@
 
     <ul class="nav navbar-top-links navbar-right">
         <li class="dropdown">
+            <?php if (isset($_SESSION['logged_in']) === TRUE) { ?>
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-user fa-fw"></i> <?= $_SESSION['username']; ?> <i class="fa fa-caret-down"></i>
                 </a> <!-- END dropdown-toggle -->
                 <ul class="dropdown-menu dropdown-user">
 
@@ -23,6 +24,11 @@
                     <li><a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
 
                 </ul> <!-- END dropdown-menu -->
+            <?php } else {?>
+                <a href="<?= base_url('login') ?>">
+                    <i class="fa fa-sign-in fa-fw"></i></i>
+                </a> <!-- END dropdown-toggle -->
+            <?php } ?>
         </li> <!-- END dropdown -->
     </ul><!-- END navbar-top-links navbar-right -->
 
