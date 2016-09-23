@@ -10,6 +10,12 @@ class Authentication extends CI_Controller {
     }
         
     public function login() {
+        
+        if (isset($_SESSION['logged_in']) === TRUE) {
+            
+            redirect('/');
+            
+        } else {
 		
             $this->load->helper('form');
             $this->load->library('form_validation');
@@ -56,9 +62,16 @@ class Authentication extends CI_Controller {
 
                 }
             }
+        } // END if loggedin
     } // END login
     
     public function logout() {
+		
+	if (isset($_SESSION['logged_in']) === FALSE) {
+            
+            redirect('/');         
+            
+        } else {
 			
             // clear session
             foreach ($_SESSION as $key => $value) {
@@ -66,6 +79,7 @@ class Authentication extends CI_Controller {
             }
             
             redirect('/');
-            
+			
+        }
     } // END logout	
 } // END controller
