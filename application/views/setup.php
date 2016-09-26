@@ -25,6 +25,8 @@
                     <div class="form-group">
 			<label for="username">Username</label>
                         <input type="text" class="form-control" id="username" name="username" placeholder="Enter a username" value="admin" readonly>
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter a username" value="Admin" readonly style="display: none;">
+                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter a username" value="User" readonly style="display: none;">
                     </div>
                     <div class="form-group">
 			<label for="email">Email</label>

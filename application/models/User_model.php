@@ -11,10 +11,12 @@ class User_model extends CI_Model {
     
     //CREATE
     
-    public function create_user($username, $email, $password) {
+    public function create_user($username, $first_name, $last_name, $email, $password) {
 		
 	$data = array(
             'username' => $username,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
             'email' => $email,
             'password' => $this->hash_password($password),
             'created_at' => date('Y-m-j H:i:s'),

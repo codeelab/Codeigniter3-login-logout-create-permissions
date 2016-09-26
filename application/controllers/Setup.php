@@ -31,10 +31,12 @@ class Setup extends CI_Controller {
         } else {
 
             $username = $this->input->post('username');
+            $first_name = $this->input->post('first_name');
+            $last_name = $this->input->post('last_name');
             $email = $this->input->post('email');
             $password = $this->input->post('password');
 
-            if ($this->user_model->create_user($username, $email, $password)) {
+            if ($this->user_model->create_user($username, $first_name, $last_name, $email, $password)) {
 
                 $uid = $this->user_model->get_uid_from_username($username);
                 $this->user_model->set_permissions($uid);
