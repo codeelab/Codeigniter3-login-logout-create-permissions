@@ -25,7 +25,7 @@
 
                 </ul> <!-- END dropdown-menu -->
             <?php } else {?>
-                <a href="<?= base_url('login') ?>">
+                <a class="menu-toggle" href="<?= base_url('login') ?>">
                     <i class="fa fa-sign-in fa-fw"></i></i>
                 </a> <!-- END dropdown-toggle -->
             <?php } ?>

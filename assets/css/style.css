@@ -52,10 +52,10 @@ ul.nav.navbar-top-links.navbar-right {
     padding: 15px;
     min-height: 50px;
 }
-a.navbar-brand, a.dropdown-toggle {
+a.navbar-brand, a.dropdown-toggle, a.menu-toggle {
     color: #FFF !important;
 }
-a.dropdown-toggle:hover, .nav .open>a, .nav .open>a:focus, .nav .open>a:hover, .navbar-default .navbar-toggle:hover {
+a.dropdown-toggle:hover, a.menu-toggle:hover, .nav .open>a, .nav .open>a:focus, .nav .open>a:hover, .navbar-default .navbar-toggle:hover {
     background: #000 !important;
 }
 .navbar-top-links .dropdown-menu li {
