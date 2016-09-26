@@ -5,6 +5,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Admin</h1>
+                <a href="/admin/user">View Users</a> <br>
+                <a href="/admin/user/create-new">Create New Users</a>
             </div> <!-- END col-lg-12 -->
         </div> <!-- END row -->
     </div> <!-- END container-fluid -->
