@@ -12,7 +12,7 @@ class Home extends My_Force_Login {
         $data['page_title'] = 'Home - Dashboard';
 
         $this->load->view('templates/header', $data);
-        $this->load->view('view');
+        $this->load->view('home/view');
         $this->load->view('templates/footer');
     }
     

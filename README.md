@@ -29,10 +29,11 @@ This application was built as a templete for anyone who needs login/out features
 CREATE TABLE `users` (
   `uid` int(4) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
+  `first_name` varchar(20) NOT NULL,
+  `last_name` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL,
   `account_type` varchar(10) NOT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
