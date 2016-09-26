@@ -8,6 +8,10 @@ class Authentication extends CI_Controller {
             $this->load->model('user_model');
             
     }
+    
+    public function index() {
+        redirect('home');
+    }
         
     public function login() {
         
