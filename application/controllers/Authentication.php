@@ -86,4 +86,58 @@ class Authentication extends CI_Controller {
 			
         }
     } // END logout	
+    
+    public function change_password() {
+        
+        if (isset($_SESSION['logged_in']) === FALSE) {
+            
+            redirect('/');
+            
+        } else {
+		
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            // validation rules
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
+            $this->form_validation->set_rules('new_password', 'New Password', 'trim|required|min_length[6]');
+            $this->form_validation->set_rules('new_password_confirm', 'Confirm Password', 'trim|required|min_length[6]|matches[new_password]');
+
+            if ($this->form_validation->run() === false) {
+
+                $data['page_title'] = 'Create New User - Dashboard';
+
+                $this->load->view('templates/header', $data);
+                $this->load->view('admin/user/change_password/view');
+                $this->load->view('templates/footer');
+
+            } else {
+
+                $username = $_SESSION['username'];
+                $password = $this->input->post('password');
+                $new_password = $this->input->post('new_password');
+                $new_password_confirm = $this->input->post('new_password_confirm');
+
+                if ($this->user_model->change_password($username, $password, $new_password)) {
+
+                    $data['page_title'] = 'Create New User - Dashboard';
+
+                    $this->load->view('templates/header', $data);
+                    $this->load->view('admin/user/change_password/success');
+                    $this->load->view('templates/footer');
+
+                } else {
+
+                    $data = new stdClass();
+                    $data->error = 'Current password incorrect. Please try again.';
+
+                    // failed to create user
+                    $this->load->view('templates/header', $data);
+                    $this->load->view('admin/user/change_password/view', $data);
+                    $this->load->view('templates/footer');
+
+                }
+            } // END if logged in
+        }
+     } // END change password
 } // END controller

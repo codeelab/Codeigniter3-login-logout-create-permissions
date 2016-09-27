@@ -77,7 +77,7 @@ class User extends My_Force_Admin {
 
                 // failed to create user
                 $this->load->view('templates/header');
-                $this->load->view('portal/admin/user/create_new/view');
+                $this->load->view('admin/user/create_new/view');
                 $this->load->view('templates/footer');
 
             }	

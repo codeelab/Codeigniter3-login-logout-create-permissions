@@ -83,4 +83,23 @@ class User_model extends CI_Model {
 		
     }    
     
+    public function change_password($username, $password, $new_password) {
+    
+        $this->db->select('password');
+	$this->db->from('users');
+	$this->db->where('username', $username);
+	$hash = $this->db->get()->row('password');
+		
+	if ($this->verify_password_hash($password, $hash)) {
+            
+            $data = array(
+                'password' => $this->hash_password($new_password),
+            );
+            
+            $this->db->where('username', $username);
+            return $this->db->update('users', $data);
+        
+        }
+    }
+    
 } // END model

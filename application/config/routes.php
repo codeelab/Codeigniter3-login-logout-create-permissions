@@ -57,6 +57,7 @@ $route['translate_uri_dashes'] = TRUE;
 // authentication
 $route['login'] = 'authentication/login';
 $route['logout'] = 'authentication/logout';
+$route['change-password'] = 'authentication/change-password';
 $route['admin/permissions'] = 'home/permissions';
 
 // home
