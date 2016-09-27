@@ -169,3 +169,11 @@ a.dropdown-toggle:hover, a.menu-toggle:hover, .nav .open>a, .nav .open>a:focus, 
 .active > a > .fa.plus-minus:before {
     content: "\f068";
 }
+
+/* Grocery CRUD */
+.flexigrid div.flexigrid a {
+    display: inline-block;
+}
+.flexigrid .tDiv {
+    height: 30px;
+}

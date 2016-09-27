@@ -21,6 +21,7 @@
                     <li><a href="<?= base_url('home') ?>"><i class="fa fa-home fa-fw"></i> Home</a></li>
 
                     <li class="divider"></li>
+                    <li><a href="<?= base_url('change-password') ?>"><i class="fa fa-unlock-alt fa-fw"></i> Change Password</a></li>
                     <li><a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
 
                 </ul> <!-- END dropdown-menu -->
