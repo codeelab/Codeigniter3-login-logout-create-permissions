@@ -13,7 +13,7 @@ This application was built as a templete for anyone who needs login/out features
 1. Clone this project onto your server
 2. Add the following to your Apache server configuration or allow .htaccess overrides.
 ```apache
-    <Directory /var/www/html/gallery.williambargent>
+    <Directory /var/www/html/>
          AllowOverride All
    </Directory>
 ```
