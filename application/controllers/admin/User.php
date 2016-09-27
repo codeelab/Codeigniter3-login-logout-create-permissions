@@ -83,4 +83,49 @@ class User extends My_Force_Admin {
             }	
         }
     } // END create
+    
+    public function change_user_password() {
+		
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        // validation rules
+        $this->form_validation->set_rules('new_password', 'New Password', 'trim|required|min_length[6]');
+        $this->form_validation->set_rules('new_password_confirm', 'Confirm Password', 'trim|required|min_length[6]|matches[new_password]');
+
+        if ($this->form_validation->run() === false) {
+
+            $data['page_title'] = 'Change User Password - Dashboard';
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('admin/user/change_user_password/view');
+            $this->load->view('templates/footer');
+
+        } else {
+
+            $username = $this->input->post('full_name');
+            $new_password = $this->input->post('new_password');
+            $new_password_confirm = $this->input->post('new_password_confirm');
+
+            if ($this->user_model->change_user_password($username, $new_password)) {
+
+                $data['page_title'] = 'Change User Password - Dashboard';
+
+                $this->load->view('templates/header', $data);
+                $this->load->view('admin/user/change_user_password/success');
+                $this->load->view('templates/footer');
+
+            } else {
+
+                $data = new stdClass();
+                $data->error = "Couldn't change password. Please try again.";
+
+                // failed to create user
+                $this->load->view('templates/header', $data);
+                $this->load->view('admin/user/change_user_password/view', $data);
+                $this->load->view('templates/footer');
+
+            }
+        }
+     } // END change password
 } // END controller
