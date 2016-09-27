@@ -11,7 +11,13 @@ This application was built as a templete for anyone who needs login/out features
 
 ##Installation
 1. Clone this project onto your server
-2. Add the following to your Apache server configuration
+2. Add the following to your Apache server configuration or allow .htaccess overrides.
+```apache
+    <Directory /var/www/html/gallery.williambargent>
+         AllowOverride All
+   </Directory>
+```
+or
 ```apache
    <Directory /var/www/html/>
       AllowOverride All
@@ -48,3 +54,4 @@ CREATE TABLE `permissions` (
 
 5. Add your domain to the `$config['base_url'] = '';` in `applications/config/config.php`
 6. Navigate to domain.com/setup to create the admin user.
+7. Delete the setup controller and view for security. `applications/controllers/Setup.php` and `applications/views/setup.php`
