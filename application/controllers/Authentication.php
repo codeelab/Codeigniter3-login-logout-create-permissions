@@ -91,7 +91,8 @@ class Authentication extends CI_Controller {
         
         if (isset($_SESSION['logged_in']) === FALSE) {
             
-            redirect('/');
+            $this->session->set_userdata('after_login_redirect', current_url());
+            redirect('login');
             
         } else {
 		
