@@ -13,7 +13,11 @@ This application was built as a templete for anyone who needs login/out features
 1. Clone this project onto your server
 2. Add the following to your Apache server configuration or allow .htaccess overrides.
 ```apache
+<<<<<<< HEAD
     <Directory /var/www/html/>
+=======
+   <Directory /var/www/html/>
+>>>>>>> 4edefca6f777e19cc1ceefe6140390ac2599a6a4
          AllowOverride All
    </Directory>
 ```
