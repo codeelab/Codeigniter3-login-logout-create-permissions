@@ -4,12 +4,13 @@ class My_Force_Login extends CI_Controller {
 
     function __construct(){
 	parent::__construct();
-	
-	if (isset($_SESSION['logged_in']) === FALSE) {
-                    
+        
+        if (isset($_SESSION['logged_in']) === FALSE) {
+            
+            $this->session->set_userdata('after_login_redirect', current_url());
             redirect('login');
-                    
-	}
+            
+        }
     }
 }
 

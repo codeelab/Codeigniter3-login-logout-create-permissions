@@ -52,7 +52,7 @@ class Authentication extends CI_Controller {
                     $_SESSION['logged_in'] = (bool)true;
                     $_SESSION['permissions'] = $this->user_model->get_permissions($uid);
                     
-                    redirect('/');
+                    redirect($_SESSION['after_login_redirect']);
 
                 } else {
 
