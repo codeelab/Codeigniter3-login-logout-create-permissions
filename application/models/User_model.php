@@ -37,9 +37,9 @@ class User_model extends CI_Model {
 		
     }
     
-    public function set_permissions($uid) {
+    public function set_permissions($uid, $username) {
 	
-	return $this->db->insert('permissions', array('uid' => $uid));
+	return $this->db->insert('permissions', array('uid' => $uid, 'username' => $username));
 		
     }
     

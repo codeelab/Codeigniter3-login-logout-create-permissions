@@ -38,7 +38,7 @@ class Setup extends CI_Controller {
             if ($this->user_model->create_user($username, $first_name, $last_name, $email, $password)) {
 
                 $uid = $this->user_model->get_uid_from_username($username);
-                $this->user_model->set_permissions($uid);
+                $this->user_model->set_permissions($uid, $username);
 
                 $data['page_title'] = 'Setup - Dashboard';
 

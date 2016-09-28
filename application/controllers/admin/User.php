@@ -17,9 +17,11 @@ class User extends My_Force_Admin {
         $crud->set_table('users');
         $crud->set_subject('User', 'Users');
         $crud->columns('uid','username', 'first_name', 'last_name','email','account_type', 'created_at');
+        $crud->field_type('password', 'password');
         $crud->display_as('uid','User ID');
+        $crud->unset_edit_fields('username','password', 'created_at', 'account_type'); 
         $crud->unset_add();
-        $crud->unset_edit();
+        //$crud->unset_edit();
         $crud->unset_delete();
         $output = $crud->render();
         
@@ -64,7 +66,7 @@ class User extends My_Force_Admin {
             if ($this->user_model->create_user($username, $first_name, $last_name, $email, $password)) {
 
                 $uid = $this->user_model->get_uid_from_username($username);
-                $this->user_model->set_permissions($uid);
+                $this->user_model->set_permissions($uid, $username);
 
                 $data['page_title'] = 'New User Created - Dashboard';
 
