@@ -19,8 +19,12 @@ class User extends My_Force_Admin {
         $crud->columns('uid','username', 'first_name', 'last_name','email','account_type', 'created_at');
         $crud->field_type('password', 'password');
         $crud->display_as('uid','User ID');
-        $crud->unset_edit_fields('username','password', 'created_at', 'account_type'); 
-        $crud->unset_add();
+        $crud->unset_edit_fields('username', 'created_at', 'account_type'); 
+        
+        $crud->callback_before_insert(array($this,'encrypt_password_callback'));
+        $crud->callback_before_update(array($this,'encrypt_password_callback'));
+        $crud->callback_edit_field('password',array($this,'decrypt_password_callback'));
+        //$crud->unset_add();
         //$crud->unset_edit();
         $crud->unset_delete();
         $output = $crud->render();
@@ -33,6 +37,22 @@ class User extends My_Force_Admin {
         $this->load->view('templates/table_assets.php', $output);
         
     } // END index
+    
+    function encrypt_password_callback($post_array, $primary_key = null) {
+        $this->load->library('encrypt');
+
+        $key = 'Zp30B7h6y641BVvsuGobdxFXvdCULY7g';
+        $post_array['password'] = $this->encrypt->encode($post_array['password'], $key);
+        return $post_array;
+    }
+    
+    function decrypt_password_callback($value) {
+        $this->load->library('encrypt');
+
+        $key = 'Zp30B7h6y641BVvsuGobdxFXvdCULY7g';
+        $decrypted_password = $this->encrypt->decode($value, $key);
+        return "<input type='password' name='password' value='$decrypted_password' />";
+    }
     
     public function create_new () {
 		
