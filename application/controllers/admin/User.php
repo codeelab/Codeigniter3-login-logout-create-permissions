@@ -30,7 +30,7 @@ class User extends My_Force_Admin {
         $this->load->view('templates/footer.php');
         $this->load->view('templates/table_assets.php', $output);
         
-    }
+    } // END index
     
     public function create_new () {
 		
@@ -86,6 +86,25 @@ class User extends My_Force_Admin {
             }	
         }
     } // END create
+    
+    public function permissions() {
+        
+        $crud = new grocery_CRUD();
+        $crud->set_table('permissions');
+        $crud->set_subject('Permissions', 'Permissions');
+        $crud->unset_edit_fields('username'); 
+        $crud->unset_add();
+        $crud->unset_delete();
+        $output = $crud->render();
+        
+        $data['page_title'] = 'Users - Dashboard';
+        
+        $this->load->view('templates/header.php', $data);
+        $this->load->view('admin/user/permissions.php', $output);
+        $this->load->view('templates/footer.php');
+        $this->load->view('templates/table_assets.php', $output);
+        
+    } // END user permissions
     
     public function change_user_password() {
 		

@@ -46,6 +46,7 @@ CREATE TABLE `users` (
 
 CREATE TABLE `permissions` (
   `uid` int(4) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
   `new_user` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`uid`)
