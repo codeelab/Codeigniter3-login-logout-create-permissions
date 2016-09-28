@@ -13,7 +13,7 @@ This application was built as a templete for anyone who needs login/out features
 1. Clone this project onto your server
 2. Add the following to your Apache server configuration or allow .htaccess overrides.
 ```apache
-    <Directory /var/www/html/gallery.williambargent>
+    <Directory /var/www/html/>
          AllowOverride All
    </Directory>
 ```
@@ -22,7 +22,7 @@ or
    <Directory /var/www/html/>
       AllowOverride All
       RewriteEngine on
-      RewriteCond $1 !^(index\.php|resources|robots\.txt)
+      RewriteCond $1 !^(index\.php)
       RewriteCond %{REQUEST_FILENAME} !-f
       RewriteCond %{REQUEST_FILENAME} !-d
       RewriteRule ^(.*)$ index.php/$1 [L,QSA]

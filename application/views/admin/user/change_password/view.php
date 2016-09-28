@@ -19,7 +19,7 @@
             <?php endif; ?>
             <div class="col-lg-12">
                 <div class="page-header">
-                    <h1>Change Password</h1>
+                    <h1>Change password</h1>
 		</div>
 		<?= form_open() ?>
                     <div class="form-group">

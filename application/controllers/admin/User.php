@@ -93,6 +93,7 @@ class User extends My_Force_Admin {
         $this->load->library('form_validation');
 
         // validation rules
+        $this->form_validation->set_rules('full_name', 'Username', 'trim|required|min_length[3]');
         $this->form_validation->set_rules('new_password', 'New Password', 'trim|required|min_length[6]');
         $this->form_validation->set_rules('new_password_confirm', 'Confirm Password', 'trim|required|min_length[6]|matches[new_password]');
 
@@ -121,7 +122,7 @@ class User extends My_Force_Admin {
             } else {
 
                 $data = new stdClass();
-                $data->error = "Couldn't change password. Please try again.";
+                $data->error = "User wasn't found. Please try again.";
 
                 // failed to create user
                 $this->load->view('templates/header', $data);
