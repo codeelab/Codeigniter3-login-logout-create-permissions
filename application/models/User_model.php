@@ -10,8 +10,6 @@ class User_model extends CI_Model {
 		
     }
     
-    //CREATE
-    
     public function create_user($username, $first_name, $last_name, $email, $password) {
 		
 	$data = array(
@@ -38,14 +36,6 @@ class User_model extends CI_Model {
 		
     }
     
-    public function set_permissions($uid) {
-	
-	return $this->db->insert('permissions', array('uid' => $uid));
-		
-    }
-    
-    //LOGIN
-    
     public function resolve_user_login($username, $password) {
 		
 	$this->db->select('password');
@@ -58,13 +48,6 @@ class User_model extends CI_Model {
 	return password_verify($password, password_hash($hash, PASSWORD_BCRYPT));
         
     }
-    
-    public function get_permissions($uid) {
-        
-        $query = $this->db->get_where('permissions', array('uid' => $uid));
-        return $query->result_array();
-
-    }
 
     public function get_user($uid) {
 		
@@ -73,6 +56,19 @@ class User_model extends CI_Model {
 	return $this->db->get()->row();
 		
     } 
+    
+    public function set_permissions($uid, $username) {
+	
+	return $this->db->insert('permissions', array('uid' => $uid, 'username' => $username));
+		
+    }
+    
+    public function get_permissions($uid) {
+        
+        $query = $this->db->get_where('permissions', array('uid' => $uid));
+        return $query->result_array();
+
+    }
     
     // OTHER
     
