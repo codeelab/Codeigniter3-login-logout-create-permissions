@@ -7,7 +7,8 @@ This application was built as a templete for anyone who needs login/out features
 - Create new users from your application
 - Change user permissions
 - Easy force of Login/Admin privileges
-- Redirect to previouse page after login
+- Redirect to previous page after login
+- Unique encryption key for passwords
 
 ##Installation
 1. Clone this project onto your server
