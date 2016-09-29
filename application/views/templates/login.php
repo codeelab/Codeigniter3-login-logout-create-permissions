@@ -20,7 +20,7 @@
             <div class="col-lg-12">
                 <div class="page-header">
                     <h1>Login</h1>
-		</div>
+                </div>
 		<?= form_open() ?>
                     <div class="form-group">
 			<label for="username">Username</label>

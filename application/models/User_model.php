@@ -6,6 +6,7 @@ class User_model extends CI_Model {
 		
 	parent::__construct();
             $this->load->database();
+            $this->load->library('encryption');
 		
     }
     
@@ -18,7 +19,7 @@ class User_model extends CI_Model {
             'first_name' => $first_name,
             'last_name' => $last_name,
             'email' => $email,
-            'password' => $this->hash_password($password),
+            'password' => $this->encryption->encrypt($password),
             'created_at' => date('Y-m-j H:i:s'),
             'account_type' => 'local',
 	);	
@@ -37,15 +38,9 @@ class User_model extends CI_Model {
 		
     }
     
-    public function set_permissions($uid, $username) {
+    public function set_permissions($uid) {
 	
-	return $this->db->insert('permissions', array('uid' => $uid, 'username' => $username));
-		
-    }
-    
-    private function hash_password($password) {
-		
-	return password_hash($password, PASSWORD_BCRYPT);
+	return $this->db->insert('permissions', array('uid' => $uid));
 		
     }
     
@@ -56,9 +51,11 @@ class User_model extends CI_Model {
 	$this->db->select('password');
 	$this->db->from('users');
 	$this->db->where('username', $username);
-	$hash = $this->db->get()->row('password');
-		
-	return $this->verify_password_hash($password, $hash);
+	$decrypt = $this->db->get()->row('password');
+        
+	$hash = $this->encryption->decrypt($decrypt);
+        
+	return password_verify($password, password_hash($hash, PASSWORD_BCRYPT));
         
     }
     
@@ -75,25 +72,23 @@ class User_model extends CI_Model {
 	$this->db->where('uid', $uid);
 	return $this->db->get()->row();
 		
-    }
+    } 
     
-    private function verify_password_hash($password, $hash) {
-		
-	return password_verify($password, $hash);
-		
-    }    
+    // OTHER
     
     public function change_password($username, $password, $new_password) {
     
         $this->db->select('password');
 	$this->db->from('users');
 	$this->db->where('username', $username);
-	$hash = $this->db->get()->row('password');
+	$decrypt = $this->db->get()->row('password');
+        
+        $hash = $this->encryption->decrypt($decrypt);
 		
-	if ($this->verify_password_hash($password, $hash)) {
+	if (password_verify($password, password_hash($hash, PASSWORD_BCRYPT))) {
             
             $data = array(
-                'password' => $this->hash_password($new_password),
+                'password' => $this->encryption->encrypt($new_password),
             );
             
             $this->db->where('username', $username);
@@ -105,7 +100,7 @@ class User_model extends CI_Model {
     public function change_user_password($username, $new_password) {
             
         $data = array(
-            'password' => $this->hash_password($new_password),
+            'password' => $this->encryption->encrypt($new_password),
         );
             
         $this->db->where('username', $username);

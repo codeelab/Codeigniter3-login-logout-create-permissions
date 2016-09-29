@@ -5,6 +5,7 @@ class User extends My_Force_Admin {
     public function __construct() {
         
 	parent::__construct();
+            $this->load->library('encrypt');
             $this->load->library('grocery_CRUD');
             $this->load->model('user_model');
             
@@ -39,7 +40,6 @@ class User extends My_Force_Admin {
     } // END index
     
     function encrypt_password_callback($post_array, $primary_key = null) {
-        $this->load->library('encrypt');
 
         $key = 'Zp30B7h6y641BVvsuGobdxFXvdCULY7g';
         $post_array['password'] = $this->encrypt->encode($post_array['password'], $key);
@@ -47,7 +47,6 @@ class User extends My_Force_Admin {
     }
     
     function decrypt_password_callback($value) {
-        $this->load->library('encrypt');
 
         $key = 'Zp30B7h6y641BVvsuGobdxFXvdCULY7g';
         $decrypted_password = $this->encrypt->decode($value, $key);

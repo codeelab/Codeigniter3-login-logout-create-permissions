@@ -15,7 +15,7 @@ This application was built as a templete for anyone who needs login/out features
 ```apache 
     <Directory /var/www/html/>
          AllowOverride All
-   </Directory>
+    </Directory>
 ```
 or
 ```apache
