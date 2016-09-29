@@ -40,8 +40,8 @@ CREATE TABLE `users` (
   `last_name` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `account_type` varchar(10) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `account_type` varchar(10) NOT NULL DEFAULT 'local',
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -55,5 +55,6 @@ CREATE TABLE `permissions` (
 ```
 
 5. Add your domain to the `$config['base_url'] = '';` in `applications/config/config.php`
-6. Navigate to domain.com/setup to create the admin user.
-7. Delete the setup controller and view for security. `applications/controllers/Setup.php` and `applications/views/setup.php`
+6. Generate and add your encryption key to `$config['encryption_key']` in `applications/config/config.php` `http://jeffreybarke.net/tools/codeigniter-encryption-key-generator/`
+7. Navigate to domain.com/setup to create the admin user.
+8. Delete the setup controller and view for security. `applications/controllers/Setup.php` and `applications/views/setup.php`
