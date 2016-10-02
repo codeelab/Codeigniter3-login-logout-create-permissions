@@ -20,7 +20,7 @@ class My_Force_Admin extends My_Force_Login {
 	parent::__construct();
         $this->load->library('session');
 	
-	if (isset($_SESSION['permissions'][0]['admin']) === FALSE) {
+	if (isset($_SESSION['permissions'][0]['admin']) === '0') {
                     
             //redirect('admin/permissions');
             $this->load->view('templates/header');
